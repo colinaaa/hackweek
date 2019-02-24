@@ -1,13 +1,14 @@
-FROM alpine:3.8
+FROM golang:1.11
 LABEL maintainer="colinwang"
-
-RUN apk --no-cache add tzdata ca-certificates
-# set time
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN echo "Asia/Shanghai" > /etc/timezone
 
 WORKDIR /app
 
-COPY ./hackweek ./hackweek
+# set go build and go module env for go 1.11
+ENV GOPROXY=https://goproxy.io
+ENV GO111MODULE=on
+
+COPY . .
+
+RUN go build
 
 CMD [ "./hackweek" ]
