@@ -18,6 +18,7 @@ func apiMiddleWare(ctx iris.Context) {
 	ctx.Next()
 }
 func init() {
+	app.Logger().SetLevel("debug")
 	app.Use(func(ctx iris.Context) {
 		ctx.Application().Logger().Infof("%s %s", ctx.Method(), ctx.Path())
 		ctx.Next()
@@ -33,6 +34,7 @@ func init() {
 			},
 		)
 	})
+	// register routers
 	apiRouter := app.Party("/api", apiMiddleWare)
 	authRouter := apiRouter.Party(
 		"/user/{num:string regexp([0-9]+$)}",
@@ -45,7 +47,6 @@ func init() {
 		u := database.SelectByPhone(num)
 		ctx.JSON(u)
 	})
-	// register routers
 	apiRouter.Post("/user", auth.Register)
 	apiRouter.Post("/login", auth.Login)
 	apiRouter.Post("/photo", api.Photo)

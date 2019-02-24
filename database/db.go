@@ -3,8 +3,9 @@ package database
 import (
 	"context"
 	"fmt"
-	"github.com/mongodb/mongo-go-driver/mongo/options"
 	"log"
+
+	"github.com/mongodb/mongo-go-driver/mongo/options"
 
 	"github.com/mongodb/mongo-go-driver/bson"
 
@@ -62,7 +63,7 @@ func SelectByPhone(num string) *models.User {
 		}},
 	).Decode(&u)
 	if err != nil {
-		log.Println(err)
+		log.Println("find:", err)
 	}
 	return &u
 }

@@ -2,8 +2,9 @@ package auth
 
 import (
 	"fmt"
-	"github.com/dgrijalva/jwt-go"
 	"log"
+
+	jwt "github.com/dgrijalva/jwt-go"
 
 	"github.com/colinaaa/hackweek/database"
 
@@ -31,16 +32,16 @@ func vertifyPasswd(passwd, phoneNum string) bool {
 	}
 	return true
 }
-func generatePasswd(passwd string) (hash []byte) {
+func generatePasswd(passwd string) []byte {
 	hash, err := bcrypt.GenerateFromPassword(
 		[]byte(passwd),
 		bcrypt.DefaultCost,
 	)
 	if err != nil {
-		log.Println(err)
+		log.Println("generate pwd:", err)
 		return nil
 	}
-	return
+	return hash
 }
 
 func generateToken(phoneNum string) (string, error) {
