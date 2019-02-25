@@ -13,6 +13,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags 'extldflags="-static"' .
 RUN chmod +x ./hackweek
 
+EXPOSE 8080
 CMD [ "./hackweek" ]
 
 
