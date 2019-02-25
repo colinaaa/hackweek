@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: mongo:latest
+    networks: 
+      - database
+    ports:
+      - 27017:27017
+  app: 
+    image: colinaaa/hackweek:v0.1.2
+    networks: 
+      - database
+    ports:
+      - 8080:8080
+networks: 
+  database:
