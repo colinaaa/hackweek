@@ -18,7 +18,7 @@ var db *mongo.Database
 var user *mongo.Collection
 
 func init() {
-	client, err := mongo.NewClient("mongodb://localhost")
+	client, err := mongo.NewClient("mongodb://backend:27017")
 	if err != nil {
 		log.Fatal(err)
 	}
