@@ -20,10 +20,11 @@ func apiMiddleWare(ctx iris.Context) {
 func init() {
 	app.Logger().SetLevel("debug")
 	app.Use(func(ctx iris.Context) {
-		ctx.Application().Logger().Infof("%s %s", ctx.Method(), ctx.Path())
+		ctx.Application().Logger().Infof("%s %s %s", ctx.Method(), ctx.Path(), ctx.RemoteAddr())
 		ctx.Next()
 	})
 	app.OnErrorCode(404, func(ctx iris.Context) {
+		ctx.Application().Logger().Errorf("%s %s 404", ctx.Method(), ctx.Path())
 		ctx.JSON(
 			struct {
 				Msg        string `json:"msg"`

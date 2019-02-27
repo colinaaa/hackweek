@@ -9,7 +9,7 @@ services:
     volumes:
       - /data/db:/data/db
   app: 
-    image: colinaaa/hackweek:v0.1.2
+    image: colinaaa/hackweek:v0.1.3
     # networks: 
     #   - backend
     ports:
