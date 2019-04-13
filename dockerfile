@@ -1,5 +1,5 @@
 # build stage
-FROM golang:1.11 AS build
+FROM golang:latest AS build
 LABEL maintainer="colinwang"
 
 WORKDIR /app
