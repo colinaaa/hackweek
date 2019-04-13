@@ -5,20 +5,20 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mongodb/mongo-go-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/mongodb/mongo-go-driver/bson"
+	"go.mongodb.org/mongo-driver/bson"
 
 	"github.com/colinaaa/hackweek/models"
 
-	"github.com/mongodb/mongo-go-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 var db *mongo.Database
 var user *mongo.Collection
 
 func init() {
-	client, err := mongo.NewClient("mongodb://db:27017")
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://db:27017"))
 	if err != nil {
 		log.Fatal(err)
 	}
