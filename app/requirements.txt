@@ -25,6 +25,7 @@ s3transfer
 scipy
 six
 smart-open
+torch
 torchvision
 urllib3
 Werkzeug
