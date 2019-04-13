@@ -2,19 +2,15 @@ version: '3.5'
 services:
   db:
     image: mongo:latest
-    # networks: 
-    #   - backend
     ports:
       - 27017:27017
     volumes:
       - /data/db:/data/db
   app: 
-    image: colinaaa/hackweek:v0.1.3
-    # networks: 
-    #   - backend
+    build: .
     ports:
       - 8080:8080
-# networks: 
-#   backend:
-#     name: backend
-#     driver: bridge
+  ai:
+    build: ./app
+    ports:
+      - 12380:10380
