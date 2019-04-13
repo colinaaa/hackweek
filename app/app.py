@@ -40,7 +40,7 @@ def rec(num):
 
     try:
         resp = requests.get(
-            'http://app:8080/api/user/{}/diet'.format(str(num)),
+            'http://localhost:8080/api/user/{}/diet'.format(str(num)),
             headers=headers)
     except:
         print("request wrong")
