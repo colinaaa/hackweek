@@ -13,7 +13,7 @@ idna
 isort
 itsdangerous
 Jinja2
-jmespath=
+jmespath
 lazy-object-proxy
 MarkupSafe
 mccabe
@@ -25,7 +25,6 @@ s3transfer
 scipy
 six
 smart-open
-torch
 torchvision
 urllib3
 Werkzeug
