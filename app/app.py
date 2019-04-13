@@ -40,7 +40,7 @@ def rec(num):
 
     try:
         resp = requests.get(
-            'http://localhost/api/user/{}/diet'.format(str(num)),
+            'http://app:8080/api/user/{}/diet'.format(str(num)),
             headers=headers)
     except:
         print("request wrong")
@@ -50,10 +50,9 @@ def rec(num):
     except Exception as e:
         print(e)
         return jsonify({"msg": "server wrong", "statue_code": 500})
-    print(type(foods))
-    print(foods)
     try:
         res = recommend(foods)
     except Exception as e:
-        raise e
+        print(e)
+        return jsonify({"msg":"server wrong","status_code":500})
     return jsonify(res)
